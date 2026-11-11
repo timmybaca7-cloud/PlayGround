@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#100d1c" />
+  <title>ZENITH — Cosmic Showdown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Zenith home"><span class="brand-mark">Z</span><span>ZENITH<span class="brand-sub">FIGHTING SPIRIT</span></span></a>
+      <div class="top-right"><span class="status-dot"></span><span>ARCADE MODE</span><button class="sound-button" id="soundToggle" aria-label="Toggle sound">♫ <span>SOUND ON</span></button></div>
+    </header>
+
+    <section id="setupScreen" class="setup-screen">
+      <div class="hero-copy"><span class="eyebrow"><i></i> THE TOURNAMENT BEGINS</span><h1>RISE ABOVE.<br><em>FIGHT ON.</em></h1><p>Choose your warrior. Face the galaxy's fiercest fighters.<br class="desktop-only"> Your legend starts here.</p></div>
+      <div class="setup-grid">
+        <section class="panel fighter-panel">
+          <div class="section-heading"><div><span class="eyebrow">01 / YOUR WARRIOR</span><h2>CHOOSE YOUR FIGHTER</h2></div><span class="roster-count">01 — 04</span></div>
+          <div id="roster" class="roster"></div>
+          <div class="selected-info"><div class="selected-portrait" id="selectedPortrait"></div><div><span class="eyebrow" id="fighterRole">EARTH'S LAST HOPE</span><h3 id="fighterName">KAIRO</h3><p id="fighterDesc">A fearless martial artist with limitless potential.</p></div><div class="stat-list" id="fighterStats"></div></div>
+        </section>
+        <section class="panel match-panel">
+          <div class="section-heading"><div><span class="eyebrow">02 / THE CHALLENGE</span><h2>SET THE STAGE</h2></div><span class="spark">✦</span></div>
+          <div class="opponent-card"><div class="opponent-glow"></div><div class="opponent-art" id="opponentArt"></div><div class="opponent-label"><span class="eyebrow">YOUR OPPONENT</span><strong id="opponentName">VEGA</strong><small id="opponentTitle">THE PRINCE OF RUIN</small></div><button id="swapOpponent" class="swap-button" aria-label="Change opponent">↻</button></div>
+          <div class="difficulty-label"><span class="eyebrow">AI DIFFICULTY</span><span id="difficultyHint">A worthy warm-up.</span></div>
+          <div class="difficulty-options" id="difficultyOptions"><button data-level="easy"><span>01</span> ROOKIE</button><button class="active" data-level="normal"><span>02</span> WARRIOR</button><button data-level="hard"><span>03</span> LEGEND</button></div>
+          <button id="startButton" class="start-button"><span>ENTER THE ARENA</span><b>→</b></button><div class="control-note">NO CONTROLLER? NO PROBLEM. TOUCH CONTROLS READY.</div>
+        </section>
+      </div>
+      <footer class="setup-footer"><span>© ZENITH FIGHTING SPIRIT</span><span>ONE WORLD. ONE CHAMPION.</span></footer>
+    </section>
+
+    <section id="gameScreen" class="game-screen hidden">
+      <div class="arena-top"><button class="back-button" id="backButton">← <span>BACK</span></button><div class="round-label">WORLD MARTIAL ARTS<br><b>CHAMPIONSHIP</b></div><div class="round-number">ROUND <b>01</b></div></div>
+      <div class="battle-hud">
+        <div class="combatant player-hud"><div class="combatant-line"><strong id="playerHudName">KAIRO</strong><span>YOU</span></div><div class="health-track"><div class="health-fill player-health" id="playerHealth"></div></div><div class="energy-track"><div class="energy-fill player-energy" id="playerEnergy"></div></div></div>
+        <div class="timer"><span id="timerText">99</span><small>TIME</small></div>
+        <div class="combatant enemy-hud"><div class="combatant-line"><span id="enemyHudTag">WARRIOR</span><strong id="enemyHudName">VEGA</strong></div><div class="health-track"><div class="health-fill enemy-health" id="enemyHealth"></div></div><div class="energy-track"><div class="energy-fill enemy-energy" id="enemyEnergy"></div></div></div>
+      </div>
+      <div class="arena-wrap"><canvas id="arena" aria-label="Fighting game arena"></canvas><div id="announce" class="announce"><span>READY?</span></div><div class="arena-vignette"></div></div>
+      <div class="battle-bottom"><div class="arena-tip" id="arenaTip">CHAIN STRIKES. SPEND KI ON A BLAST.</div><div class="combo-readout" id="comboReadout"></div></div>
+      <div class="touch-controls" aria-label="Touch game controls">
+        <div class="move-pad"><button data-action="left" aria-label="Move left">◀</button><button data-action="right" aria-label="Move right">▶</button></div>
+        <div class="action-pad"><button class="block-action" data-action="block"><span>GUARD</span></button><button class="blast-action" data-action="blast"><span>KI BLAST</span></button><button class="attack-action" data-action="attack"><span>STRIKE</span></button><button class="jump-action" data-action="jump"><span>JUMP</span></button></div>
+      </div>
+      <div class="keyboard-hint">A / D MOVE <span>•</span> W JUMP <span>•</span> J STRIKE <span>•</span> K KI BLAST <span>•</span> L GUARD</div>
+    </section>
+    <div id="resultModal" class="result-modal hidden"><div class="result-card"><span class="eyebrow">THE TOURNAMENT HAS SPOKEN</span><h2 id="resultTitle">VICTORY</h2><p id="resultText">A new champion rises.</p><div class="result-actions"><button id="rematchButton">REMATCH ↻</button><button id="menuButton">FIGHTER SELECT</button></div></div></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
